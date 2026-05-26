@@ -1,0 +1,58 @@
+name: Deploy release archive
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Download release archive
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          archive_url="$(jq -r '.release.assets[] | select(.name | endswith(".zip")) | .url' "$GITHUB_EVENT_PATH" | head -n1)"
+
+          if [ -z "$archive_url" ] || [ "$archive_url" = "null" ]; then
+            echo "No .zip release asset was found."
+            exit 1
+          fi
+
+          curl -fLsS \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/octet-stream" \
+            "$archive_url" \
+            -o site.zip
+
+      - name: Extract archive
+        run: |
+          set -euo pipefail
+          mkdir -p site
+          unzip -q site.zip -d site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
