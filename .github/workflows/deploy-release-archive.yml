@@ -32,7 +32,7 @@ jobs:
           archive_url="$(jq -r '.release.assets[] | select(.name == "site.zip") | .url' "$GITHUB_EVENT_PATH" | head -n1)"
 
           if [ -z "$archive_url" ] || [ "$archive_url" = "null" ]; then
-            echo "No site.zip release asset was found."
+            echo "No site.zip release asset was found. Attach a release asset named exactly site.zip and publish the release again."
             exit 1
           fi
 
@@ -46,6 +46,10 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p site
+          if ! unzip -tq site.zip >/dev/null; then
+            echo "The site.zip asset is not a valid zip archive."
+            exit 1
+          fi
           unzip -q site.zip -d site
 
       - name: Upload Pages artifact
