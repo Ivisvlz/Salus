@@ -5,10 +5,10 @@ Deploy your static HTML site by uploading a `.zip` archive as a GitHub Release a
 ## Upload archive flow
 
 1. Create a release in this repository.
-2. Attach a `.zip` file that contains your site files (`index.html`, assets, etc.).
+2. Attach a `.zip` file named `site.zip` that contains your site files (`index.html`, assets, etc.).
 3. Publish the release.
 
 The workflow at `.github/workflows/deploy-release-archive.yml` will:
-- download the first `.zip` asset from that release,
+- download `site.zip` from that release,
 - extract it,
 - deploy it to GitHub Pages.
