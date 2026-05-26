@@ -29,12 +29,19 @@ jobs:
         run: |
           set -euo pipefail
 
-          archive_url="$(jq -r '.release.assets[] | select(.name == "site.zip") | .url' "$GITHUB_EVENT_PATH" | head -n1)"
+          mapfile -t archive_urls < <(jq -r '.release.assets[] | select(.name == "site.zip") | .url' "$GITHUB_EVENT_PATH")
 
-          if [ -z "$archive_url" ] || [ "$archive_url" = "null" ]; then
+          if [ "${#archive_urls[@]}" -eq 0 ]; then
             echo "No site.zip release asset was found. Attach a release asset named exactly site.zip and publish the release again."
             exit 1
           fi
+
+          if [ "${#archive_urls[@]}" -gt 1 ]; then
+            echo "Multiple site.zip assets were found. Keep only one site.zip asset in the release."
+            exit 1
+          fi
+
+          archive_url="${archive_urls[0]}"
 
           curl -fLsS \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
@@ -46,7 +53,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p site
-          if ! unzip -tq site.zip >/dev/null; then
+          if ! unzip -t site.zip >/dev/null; then
             echo "The site.zip asset is not a valid zip archive."
             exit 1
           fi
