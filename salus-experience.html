@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>SALUS — Tu salud, inteligente</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #1A2B6B;
+  --orange: #FF5722;
+  --magenta:#E91E8C;
+  --teal:   #00BFA5;
+  --white:  #FFFFFF;
+  --bg:     #F8F9FF;
+  --gray:   #F2F3F8;
+  --text:   #1A2B6B;
+  --soft:   #6B7280;
+  --r:      20px;
+  --rs:     14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(26,43,107,.08);
+}
+.logo{font-size:22px;font-weight:900;color:var(--navy);letter-spacing:-1px}
+.logo span{color:var(--teal)}
+.nav-pill{
+  background:var(--navy);color:#fff;
+  padding:9px 22px;border-radius:100px;
+  font-size:13px;font-weight:700;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;
+  transition:background .2s;
+}
+.nav-pill:active{background:var(--magenta)}
+
+/* ── HERO ── */
+#hero{
+  min-height:100svh;
+  padding:100px 24px 60px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+}
+/* Qik-style decorative arcs */
+.arc{position:absolute;border-radius:50%;pointer-events:none}
+.arc-1{width:280px;height:280px;border:55px solid var(--orange);top:-80px;left:-80px;opacity:.9}
+.arc-2{width:220px;height:220px;border:45px solid var(--magenta);bottom:-60px;right:-60px;opacity:.9}
+.arc-3{width:160px;height:160px;border:35px solid var(--teal);top:30%;right:-40px;opacity:.7}
+.arc-4{width:120px;height:120px;border:28px solid var(--navy);bottom:20%;left:-30px;opacity:.5}
+
+.hero-label{
+  display:inline-block;background:var(--teal);color:#fff;
+  padding:6px 18px;border-radius:100px;
+  font-size:12px;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;margin-bottom:24px;
+}
+.hero-title{
+  font-size:clamp(38px,9vw,72px);font-weight:900;
+  line-height:1.05;letter-spacing:-2px;
+  color:var(--navy);margin-bottom:18px;
+}
+.hero-title .t{color:var(--teal)}
+.hero-title .o{color:var(--orange)}
+.hero-sub{
+  font-size:clamp(15px,4vw,18px);color:var(--soft);
+  line-height:1.6;max-width:380px;margin:0 auto 36px;
+  font-weight:400;
+}
+.hero-btns{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%;max-width:320px;margin:0 auto 48px}
+.btn-main{
+  width:100%;background:var(--navy);color:#fff;
+  padding:16px;border-radius:100px;
+  font-size:16px;font-weight:700;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:transform .15s;
+}
+.btn-main:active{transform:scale(.97)}
+.btn-outline{
+  width:100%;background:transparent;color:var(--navy);
+  padding:15px;border-radius:100px;
+  font-size:15px;font-weight:600;
+  border:2px solid rgba(26,43,107,.2);cursor:pointer;
+  font-family:'Inter',sans-serif;transition:border-color .2s;
+}
+.btn-outline:active{border-color:var(--navy)}
+
+/* Phone mockup in hero */
+.hero-phone{
+  width:220px;margin:0 auto;
+  background:#fff;border-radius:36px;padding:14px;
+  box-shadow:0 24px 60px rgba(26,43,107,.18),0 0 0 1px rgba(26,43,107,.06);
+  position:relative;z-index:2;
+}
+.phone-notch{
+  width:80px;height:22px;background:var(--navy);
+  border-radius:100px;margin:0 auto 12px;
+}
+.hero-phone-screen{
+  background:var(--bg);border-radius:24px;
+  padding:16px;display:flex;flex-direction:column;gap:10px;
+  min-height:300px;
+}
+.hp-greeting{font-size:11px;color:var(--soft);font-weight:500}
+.hp-name{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.hp-card{
+  border-radius:14px;padding:14px;
+  font-size:12px;font-weight:600;
+}
+.hp-card-label{font-size:10px;font-weight:500;opacity:.7;margin-bottom:2px}
+.hp-card-val{font-size:14px;font-weight:800}
+
+/* ── STATS ── */
+.stats-row{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px;padding:24px;background:var(--navy);
+}
+.stat-box{
+  background:rgba(255,255,255,.08);
+  border-radius:var(--rs);padding:20px 16px;text-align:center;
+}
+.stat-n{font-size:32px;font-weight:900;color:#fff;letter-spacing:-1px}
+.stat-l{font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;font-weight:500;line-height:1.3}
+
+/* ── COMMON SECTION ── */
+.section{padding:72px 24px}
+.section-inner{max-width:480px;margin:0 auto}
+.tag{
+  display:inline-block;padding:6px 16px;
+  border-radius:100px;font-size:11px;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px;
+}
+.section-title{font-size:clamp(28px,7vw,40px);font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:14px}
+.section-sub{font-size:15px;color:var(--soft);line-height:1.65;font-weight:400}
+
+/* ── PROBLEM ── */
+.problem-cards{display:flex;flex-direction:column;gap:14px;margin-top:36px}
+.prob-card{
+  background:#fff;border-radius:var(--r);padding:20px;
+  display:flex;gap:16px;align-items:flex-start;
+  box-shadow:0 2px 16px rgba(26,43,107,.07);
+  border-left:4px solid transparent;
+  opacity:0;transform:translateX(-16px);transition:all .5s ease;
+}
+.prob-card.in{opacity:1;transform:translateX(0)}
+.prob-icon{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.prob-card h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.prob-card p{font-size:13px;color:var(--soft);line-height:1.5}
+
+/* ── AVATAR ── */
+#avatar{background:var(--bg)}
+.chat-box{
+  background:#fff;border-radius:var(--r);
+  box-shadow:0 4px 24px rgba(26,43,107,.10);
+  overflow:hidden;margin-top:32px;
+}
+.chat-head{
+  background:var(--navy);padding:18px 20px;
+  display:flex;align-items:center;gap:12px;
+}
+.chat-head-icon{
+  width:38px;height:38px;background:var(--teal);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:700;color:#fff;font-family:'Inter',sans-serif;
+}
+.chat-head-name{color:#fff;font-weight:700;font-size:14px}
+.chat-head-status{color:rgba(255,255,255,.6);font-size:11px}
+.chat-msgs{
+  padding:18px;height:240px;overflow-y:auto;
+  display:flex;flex-direction:column;gap:10px;
+  scroll-behavior:smooth;
+}
+.msg{max-width:82%;padding:11px 15px;border-radius:18px;font-size:13px;line-height:1.5;font-weight:400}
+.msg-ai{background:var(--bg);color:var(--navy);align-self:flex-start;border-bottom-left-radius:4px}
+.msg-user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chips-row{padding:0 18px 14px;display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;
+  cursor:pointer;border:1.5px solid;transition:all .15s;
+  font-family:'Inter',sans-serif;
+}
+.chip:active{transform:scale(.95)}
+.chat-foot{
+  border-top:1px solid var(--gray);padding:14px 18px;
+  display:flex;gap:10px;align-items:center;
+}
+.chat-input{
+  flex:1;border:none;outline:none;font-size:14px;
+  font-family:'Inter',sans-serif;color:var(--text);background:transparent;
+}
+.chat-input::placeholder{color:var(--soft)}
+.send-btn{
+  width:34px;height:34px;background:var(--teal);
+  border:none;border-radius:50%;cursor:pointer;
+  color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;
+  transition:transform .15s;
+}
+.send-btn:active{transform:scale(.9)}
+
+/* Body map */
+.body-wrap{margin-top:24px;background:#fff;border-radius:var(--r);padding:24px;box-shadow:0 4px 24px rgba(26,43,107,.10)}
+.body-wrap-title{font-size:15px;font-weight:700;margin-bottom:18px;text-align:center}
+
+/* Modal overlay for zoomed body zone */
+.zone-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(26,43,107,.5);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.zone-modal.open{display:flex}
+.zone-panel{
+  background:#fff;border-radius:24px;padding:28px;
+  width:100%;max-width:360px;
+  animation:popIn .3s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.zone-panel-title{font-size:18px;font-weight:800;margin-bottom:6px}
+.zone-panel-sub{font-size:13px;color:var(--soft);margin-bottom:20px;line-height:1.5}
+.zone-subzones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.subzone{
+  border-radius:14px;padding:14px 12px;text-align:center;
+  cursor:pointer;transition:all .2s;border:2px solid transparent;
+}
+.subzone:active{transform:scale(.96)}
+.subzone-name{font-size:13px;font-weight:700;margin-bottom:3px}
+.subzone-desc{font-size:11px;color:var(--soft);line-height:1.3}
+.subzone.selected{border-color:var(--navy)}
+.zone-close{
+  width:100%;padding:14px;background:var(--navy);color:#fff;
+  border:none;border-radius:100px;font-size:14px;font-weight:700;
+  cursor:pointer;font-family:'Inter',sans-serif;
+}
+.zone-close:active{background:var(--magenta)}
+
+/* SVG body zones */
+.bzone{cursor:pointer;transition:fill .2s,stroke .2s;stroke-width:1.5}
+.bzone:hover,.bzone.active{stroke:var(--navy)}
+.bzone.pain{animation:painPulse 1.5s ease infinite}
+@keyframes painPulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+/* week strip */
+.week-strip{
+  margin-top:16px;background:var(--bg);border-radius:14px;
+  padding:16px;
+}
+.week-strip-label{font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.week-days{display:flex;justify-content:space-between}
+.wday{display:flex;flex-direction:column;align-items:center;gap:4px}
+.wday-circle{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;cursor:pointer;
+}
+.wday-lbl{font-size:10px;color:var(--soft);font-weight:500}
+
+/* AI alert */
+.ai-alert{
+  margin-top:14px;background:#EEF2FF;border-radius:14px;
+  padding:16px;border-left:4px solid var(--navy);
+}
+.ai-alert-t{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.ai-alert p{font-size:12px;color:#374151;line-height:1.6}
+
+/* ── GEO ── */
+#geo{background:#fff}
+.ars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.ars-btn{
+  padding:12px;border-radius:var(--rs);border:2px solid var(--gray);
+  background:#fff;font-size:13px;font-weight:700;cursor:pointer;
+  font-family:'Inter',sans-serif;color:var(--text);transition:all .2s;
+  text-align:center;
+}
+.ars-btn.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
+.spec-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.spec-btn{
+  padding:9px 18px;border-radius:100px;border:2px solid var(--gray);
+  background:#fff;font-size:12px;font-weight:700;cursor:pointer;
+  font-family:'Inter',sans-serif;color:var(--text);transition:all .2s;
+}
+.spec-btn.sel{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+/* Fake map */
+.map-wrap{
+  border-radius:var(--r);overflow:hidden;
+  height:240px;margin-bottom:20px;position:relative;
+  box-shadow:0 4px 20px rgba(26,43,107,.12);
+}
+.map-bg{
+  width:100%;height:100%;
+  background:linear-gradient(160deg,#dbeafe 0%,#e0f2fe 40%,#d1fae5 100%);
+  position:relative;overflow:hidden;
+}
+.map-road-h,.map-road-v{position:absolute;background:rgba(255,255,255,.8)}
+.map-road-h{left:0;right:0;height:7px;border-radius:4px}
+.map-road-v{top:0;bottom:0;width:7px;border-radius:4px}
+.map-block{position:absolute;background:rgba(255,255,255,.45);border-radius:6px}
+.user-pin{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:14px;height:14px;background:var(--navy);border-radius:50%;
+  border:3px solid #fff;box-shadow:0 0 0 8px rgba(26,43,107,.15);
+  animation:upulse 2s ease infinite;
+}
+@keyframes upulse{0%,100%{box-shadow:0 0 0 8px rgba(26,43,107,.15)}50%{box-shadow:0 0 0 14px rgba(26,43,107,.08)}}
+.mpin{position:absolute;transform:translate(-50%,-100%);cursor:pointer}
+.mpin-b{
+  background:#fff;border-radius:10px;padding:7px 11px;
+  font-size:11px;font-weight:700;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,0,0,.15);
+  display:flex;align-items:center;gap:5px;
+  position:relative;
+}
+.mpin-b::after{
+  content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);
+  width:0;height:0;border-left:5px solid transparent;
+  border-right:5px solid transparent;border-top:5px solid #fff;
+}
+.mpin-dot{width:8px;height:8px;border-radius:50%}
+.map-lbl{
+  position:absolute;bottom:10px;left:10px;right:10px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;color:var(--navy);
+}
+.doc-list{display:flex;flex-direction:column;gap:12px}
+.doc-card{
+  background:#fff;border-radius:var(--r);padding:16px;
+  display:flex;gap:14px;align-items:center;
+  box-shadow:0 2px 14px rgba(26,43,107,.08);
+  opacity:0;transform:translateY(8px);transition:all .4s ease;
+}
+.doc-card.in{opacity:1;transform:translateY(0)}
+.doc-av{
+  width:46px;height:46px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;font-weight:700;color:#fff;
+  font-family:'Inter',sans-serif;
+}
+.doc-name{font-size:14px;font-weight:700}
+.doc-spec{font-size:12px;color:var(--soft);margin-bottom:6px}
+.doc-tags{display:flex;gap:6px;flex-wrap:wrap}
+.dtag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px}
+
+/* ── FEATURES ── */
+#features{background:var(--bg)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.feat-card{
+  background:#fff;border-radius:var(--r);padding:20px 16px;
+  box-shadow:0 2px 14px rgba(26,43,107,.07);
+  opacity:0;transform:translateY(16px);transition:all .4s ease;
+}
+.feat-card.in{opacity:1;transform:translateY(0)}
+.feat-icon{
+  width:46px;height:46px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:12px;
+}
+.feat-card h3{font-size:13px;font-weight:700;margin-bottom:6px;line-height:1.3}
+.feat-card p{font-size:12px;color:var(--soft);line-height:1.5}
+
+/* ── NOTIFICATIONS ── */
+#notifs{background:#fff}
+.notif-phone{
+  background:var(--navy);border-radius:28px;padding:16px;
+  max-width:300px;margin:32px auto 0;
+  box-shadow:0 20px 50px rgba(26,43,107,.25);
+}
+.notif-screen{background:var(--bg);border-radius:20px;padding:14px;overflow:hidden}
+.notif-time-big{text-align:center;font-size:38px;font-weight:300;color:var(--navy);margin-bottom:12px}
+.notif-item{
+  background:rgba(255,255,255,.9);border-radius:14px;
+  padding:12px 14px;margin-bottom:8px;
+  display:flex;gap:11px;align-items:center;
+}
+.notif-app-ic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.notif-body{}
+.notif-app-nm{font-size:10px;font-weight:700;color:var(--soft);margin-bottom:1px}
+.notif-msg{font-size:12px;font-weight:600;color:var(--navy);line-height:1.3}
+.notif-types{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+.notif-type-row{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#fff;border-radius:var(--rs);padding:18px;
+  box-shadow:0 2px 12px rgba(26,43,107,.07);
+}
+.nt-icon{
+  width:44px;height:44px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.nt-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.nt-desc{font-size:12px;color:var(--soft);line-height:1.5}
+
+/* ── HISTORIAL ── */
+#historial{background:var(--bg)}
+.hist-card{
+  background:#fff;border-radius:var(--r);
+  box-shadow:0 4px 24px rgba(26,43,107,.10);
+  overflow:hidden;margin-top:32px;
+}
+.hist-head{
+  background:var(--navy);padding:22px 20px;
+}
+.hist-profile{display:flex;gap:14px;align-items:center;margin-bottom:16px}
+.hist-av{
+  width:52px;height:52px;background:var(--teal);
+  border-radius:16px;display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;color:#fff;
+}
+.hist-name{font-size:18px;font-weight:800;color:#fff}
+.hist-meta{font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.hist-pills{display:flex;gap:8px;flex-wrap:wrap}
+.hpill{background:rgba(255,255,255,.15);color:#fff;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600}
+.hist-entries{padding:20px;display:flex;flex-direction:column;gap:0}
+.hist-entry{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:14px 0;border-bottom:1px solid var(--gray);
+}
+.hist-entry:last-child{border-bottom:none;padding-bottom:0}
+.entry-badge{
+  min-width:44px;background:var(--bg);border-radius:10px;
+  padding:6px 8px;text-align:center;font-size:10px;font-weight:700;
+  color:var(--navy);flex-shrink:0;line-height:1.4;
+}
+.entry-h5{font-size:13px;font-weight:700;margin-bottom:2px}
+.entry-p{font-size:11px;color:var(--soft);margin-bottom:6px}
+.etag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px}
+
+.hist-access{
+  margin-top:20px;background:var(--bg);border-radius:var(--r);padding:20px;
+  border-left:4px solid var(--teal);
+}
+.hist-access h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.hist-access p{font-size:13px;color:var(--soft);line-height:1.6}
+
+/* ── FAMILY ── */
+#family{background:#fff}
+.family-hub{
+  position:relative;width:280px;height:280px;
+  margin:32px auto;
+}
+.hub-c{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:68px;height:68px;background:var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;z-index:2;
+  box-shadow:0 6px 20px rgba(26,43,107,.3);
+}
+.hub-ring{
+  position:absolute;top:50%;left:50%;border-radius:50%;
+  border:2px dashed rgba(26,43,107,.12);transform:translate(-50%,-50%);
+}
+.hr1{width:160px;height:160px;animation:spin 25s linear infinite}
+.hr2{width:260px;height:260px;animation:spin 40s linear infinite reverse}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.fmember{
+  position:absolute;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  cursor:pointer;z-index:3;
+}
+.fav{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;border:3px solid #fff;
+  box-shadow:0 3px 12px rgba(0,0,0,.12);
+}
+.fnm{font-size:10px;font-weight:700;background:#fff;padding:2px 8px;border-radius:100px;box-shadow:0 2px 6px rgba(0,0,0,.1);white-space:nowrap}
+.fstatus{width:9px;height:9px;border-radius:50%;border:2px solid #fff;position:absolute;bottom:24px;right:-2px}
+
+.family-feats{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.fam-feat{
+  display:flex;gap:14px;align-items:center;
+  background:var(--bg);border-radius:var(--rs);padding:16px;
+}
+.fam-feat-ic{
+  width:40px;height:40px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;flex-shrink:0;
+}
+.fam-feat p{font-size:13px;font-weight:500;line-height:1.4}
+
+/* ── PLANS ── */
+#plans{background:var(--bg)}
+.plans-wrap{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+.plan-card{
+  background:#fff;border-radius:var(--r);padding:28px 24px;
+  border:2px solid var(--gray);transition:border-color .2s;
+  position:relative;overflow:hidden;
+}
+.plan-card.top-pick{border-color:var(--teal)}
+.top-pick-badge{
+  position:absolute;top:0;right:24px;
+  background:var(--teal);color:#fff;
+  padding:5px 16px 8px;border-radius:0 0 12px 12px;
+  font-size:11px;font-weight:700;letter-spacing:.3px;
+}
+.plan-name{font-size:20px;font-weight:800;margin-bottom:6px}
+.plan-desc{font-size:13px;color:var(--soft);margin-bottom:18px;line-height:1.5}
+.plan-price{font-size:32px;font-weight:900;letter-spacing:-1px}
+.plan-price span{font-size:15px;font-weight:500;color:var(--soft)}
+.plan-period{font-size:12px;color:var(--soft);margin-bottom:20px}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.plan-feats li{font-size:13px;display:flex;align-items:flex-start;gap:9px;line-height:1.4}
+.plan-feats li::before{content:'';width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px}
+.plan-btn{
+  width:100%;padding:15px;border-radius:100px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  border:2px solid;font-family:'Inter',sans-serif;transition:all .2s;
+}
+.plan-btn:active{transform:scale(.97)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy);padding:48px 24px 32px;
+  text-align:center;
+}
+.footer-logo{font-size:28px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:12px}
+.footer-logo span{color:var(--teal)}
+footer p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7}
+.footer-divider{width:60px;height:3px;background:var(--teal);border-radius:2px;margin:20px auto}
+
+/* ── UTILS ── */
+.fade-in{opacity:0;transform:translateY(20px);transition:all .55s ease}
+.fade-in.in{opacity:1;transform:translateY(0)}
+.bg-navy{background:var(--navy)}
+.bg-teal{background:var(--teal)}
+.bg-orange{background:var(--orange)}
+.bg-magenta{background:var(--magenta)}
+
+/* Typing dots */
+.typing-dots{display:flex;gap:4px;padding:4px 2px;align-items:center}
+.tdot{width:7px;height:7px;background:var(--soft);border-radius:50%;animation:tdot .8s ease infinite}
+.tdot:nth-child(2){animation-delay:.15s}
+.tdot:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+
+/* scrollbar */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">SA<span>LUS</span></div>
+  <button class="nav-pill" onclick="document.getElementById('avatar').scrollIntoView({behavior:'smooth'})">Explorar</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="arc arc-1"></div>
+  <div class="arc arc-2"></div>
+  <div class="arc arc-3"></div>
+  <div class="arc arc-4"></div>
+
+  <div style="position:relative;z-index:2;width:100%">
+    <div class="hero-label">República Dominicana</div>
+    <h1 class="hero-title">
+      Tu salud,<br>
+      <span class="t">inteligente</span><br>
+      y <span class="o">conectada</span>
+    </h1>
+    <p class="hero-sub">La plataforma digital que unifica pacientes, médicos, aseguradoras y farmacias en un solo lugar.</p>
+    <div class="hero-btns">
+      <button class="btn-main" onclick="document.getElementById('avatar').scrollIntoView({behavior:'smooth'})">Ver cómo funciona</button>
+      <button class="btn-outline" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Ver funcionalidades</button>
+    </div>
+
+    <div class="hero-phone">
+      <div class="phone-notch"></div>
+      <div class="hero-phone-screen">
+        <div class="hp-greeting">Buenos días</div>
+        <div class="hp-name">María García</div>
+        <div class="hp-card" style="background:#EEF2FF">
+          <div class="hp-card-label">Próxima cita</div>
+          <div class="hp-card-val" style="color:var(--navy)">Dr. Ramírez · 10:30 AM</div>
+        </div>
+        <div class="hp-card" style="background:#E6FFF9">
+          <div class="hp-card-label">Medicamento pendiente</div>
+          <div class="hp-card-val" style="color:var(--teal)">Metformina · 8:00 AM</div>
+        </div>
+        <div class="hp-card" style="background:#FFF0EB">
+          <div class="hp-card-label">Alerta IA</div>
+          <div class="hp-card-val" style="color:var(--orange)">3 síntomas repetidos esta semana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-box"><div class="stat-n" id="s1">0%</div><div class="stat-l">de dominicanos usaría una app de salud</div></div>
+  <div class="stat-box"><div class="stat-n" id="s2">0+</div><div class="stat-l">ARS integradas en RD</div></div>
+  <div class="stat-box"><div class="stat-n" id="s3">0h+</div><div class="stat-l">promedio de espera en urgencias</div></div>
+  <div class="stat-box"><div class="stat-n" id="s4">0</div><div class="stat-l">plataformas con ecosistema completo en RD</div></div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section" id="problem">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#FFF0EB;color:var(--orange)">El problema</div>
+      <h2 class="section-title">Un sistema <span style="color:var(--orange)">fragmentado</span></h2>
+      <p class="section-sub">Millones de dominicanos enfrentan barreras innecesarias para acceder a atención médica de calidad.</p>
+    </div>
+    <div class="problem-cards">
+      <div class="prob-card" style="border-left-color:var(--orange)">
+        <div class="prob-icon" style="background:#FFF0EB">📂</div>
+        <div><h4>Sin historial centralizado</h4><p>Cada médico empieza desde cero. Tus datos médicos no viajan contigo a ningún lado.</p></div>
+      </div>
+      <div class="prob-card" style="border-left-color:var(--magenta)">
+        <div class="prob-icon" style="background:#FDF2F8">📍</div>
+        <div><h4>Barreras geográficas</h4><p>Personas de zonas rurales viajan horas sin saber si hay especialistas disponibles o si aceptan su seguro.</p></div>
+      </div>
+      <div class="prob-card" style="border-left-color:var(--navy)">
+        <div class="prob-icon" style="background:#EEF2FF">⏱</div>
+        <div><h4>Tiempos de espera extremos</h4><p>Más de 3 horas en urgencias, semanas para una cita. Procesos en papel duplicados.</p></div>
+      </div>
+      <div class="prob-card" style="border-left-color:var(--teal)">
+        <div class="prob-icon" style="background:#E6FFF9">💊</div>
+        <div><h4>Automedicación sin orientación</h4><p>Sin una guía accesible y confiable, las personas se automedican arriesgando su salud.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVATAR -->
+<section class="section" id="avatar" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#EEF2FF;color:var(--navy)">IA Corporal</div>
+      <h2 class="section-title">Cuéntale cómo<br>te sientes <span style="color:var(--teal)">hoy</span></h2>
+      <p class="section-sub">Nuestra IA aprende tu cuerpo. Detecta patrones y te avisa antes de que un problema se vuelva grave.</p>
+    </div>
+
+    <div class="chat-box fade-in">
+      <div class="chat-head">
+        <div class="chat-head-icon">IA</div>
+        <div>
+          <div class="chat-head-name">Asistente Salus</div>
+          <div class="chat-head-status">En línea · Responde al instante</div>
+        </div>
+      </div>
+      <div class="chat-msgs" id="chatMsgs">
+        <div class="msg msg-ai">Hola María. ¿Cómo te sientes hoy? Cuéntame qué te molesta.</div>
+      </div>
+      <div class="chips-row">
+        <div class="chip" style="background:#FFF0EB;color:var(--orange);border-color:var(--orange)" onclick="sendChip('Tengo dolor de cabeza')">Dolor de cabeza</div>
+        <div class="chip" style="background:#EEF2FF;color:var(--navy);border-color:var(--navy)" onclick="sendChip('Tengo fiebre')">Fiebre</div>
+        <div class="chip" style="background:#FFF0EB;color:var(--magenta);border-color:var(--magenta)" onclick="sendChip('Me duele el pecho')">Dolor de pecho</div>
+        <div class="chip" style="background:#E6FFF9;color:var(--teal);border-color:var(--teal)" onclick="sendChip('Estoy muy cansado')">Cansancio</div>
+        <div class="chip" style="background:#FDF2F8;color:var(--magenta);border-color:var(--magenta)" onclick="sendChip('Tengo mareos')">Mareos</div>
+      </div>
+      <div class="chat-foot">
+        <input class="chat-input" id="chatIn" placeholder="Escribe cómo te sientes..." onkeydown="if(event.key==='Enter')doSend()">
+        <button class="send-btn" onclick="doSend()">&#10148;</button>
+      </div>
+    </div>
+
+    <div class="body-wrap fade-in">
+      <div class="body-wrap-title">Tu cuerpo · toca una zona</div>
+      <svg viewBox="0 0 120 290" xmlns="http://www.w3.org/2000/svg" style="width:150px;display:block;margin:0 auto">
+        <ellipse id="bz-head" class="bzone" cx="60" cy="28" rx="22" ry="25" fill="#EEF2FF" stroke="#c7d2fe" onclick="openZone('head')"/>
+        <rect id="bz-neck" class="bzone" x="51" y="51" width="18" height="13" rx="6" fill="#EEF2FF" stroke="#c7d2fe" onclick="openZone('neck')"/>
+        <rect id="bz-chest" class="bzone" x="30" y="63" width="60" height="48" rx="12" fill="#E6FFF9" stroke="#99f6e4" onclick="openZone('chest')"/>
+        <rect id="bz-abdomen" class="bzone" x="33" y="109" width="54" height="38" rx="10" fill="#E6FFF9" stroke="#99f6e4" onclick="openZone('abdomen')"/>
+        <rect id="bz-larm" class="bzone" x="8" y="63" width="20" height="58" rx="10" fill="#FFF0EB" stroke="#fdba74" onclick="openZone('larm')"/>
+        <rect id="bz-rarm" class="bzone" x="92" y="63" width="20" height="58" rx="10" fill="#FFF0EB" stroke="#fdba74" onclick="openZone('rarm')"/>
+        <rect id="bz-lleg" class="bzone" x="33" y="145" width="22" height="80" rx="10" fill="#FDF2F8" stroke="#f9a8d4" onclick="openZone('lleg')"/>
+        <rect id="bz-rleg" class="bzone" x="65" y="145" width="22" height="80" rx="10" fill="#PG#FDF2F8" stroke="#f9a8d4" fill="#FDF2F8" onclick="openZone('rleg')"/>
+        <rect id="bz-lfoot" class="bzone" x="28" y="222" width="28" height="14" rx="7" fill="#FDF2F8" stroke="#f9a8d4" onclick="openZone('lfoot')"/>
+        <rect id="bz-rfoot" class="bzone" x="64" y="222" width="28" height="14" rx="7" fill="#FDF2F8" stroke="#f9a8d4" onclick="openZone('rfoot')"/>
+      </svg>
+
+      <div class="week-strip">
+        <div class="week-strip-label">Historial de la semana</div>
+        <div class="week-days">
+          <div class="wday"><div class="wday-circle" style="background:#FFF0EB;color:var(--orange)">L</div><div class="wday-lbl">Lun</div></div>
+          <div class="wday"><div class="wday-circle" style="background:#E6FFF9;color:var(--teal)">M</div><div class="wday-lbl">Mar</div></div>
+          <div class="wday"><div class="wday-circle" style="background:#FFF0EB;color:var(--orange)">X</div><div class="wday-lbl">Mié</div></div>
+          <div class="wday"><div class="wday-circle" style="background:#E6FFF9;color:var(--teal)">J</div><div class="wday-lbl">Jue</div></div>
+          <div class="wday"><div class="wday-circle" style="background:#FFF0EB;color:var(--orange)">V</div><div class="wday-lbl">Vie</div></div>
+          <div class="wday"><div class="wday-circle" style="background:#EEF2FF;color:var(--navy)">S</div><div class="wday-lbl">Sáb</div></div>
+          <div class="wday"><div class="wday-circle" style="background:var(--navy);color:#fff">D</div><div class="wday-lbl">Hoy</div></div>
+        </div>
+      </div>
+
+      <div class="ai-alert">
+        <div class="ai-alert-t">Patrón detectado por IA</div>
+        <p>Has reportado <strong>dolor de cabeza 3 veces esta semana</strong> combinado con mareos. Esto puede indicar hipertensión o migraña crónica. Recomendamos consultar un <strong>Neurólogo</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE MODAL -->
+<div class="zone-modal" id="zoneModal" onclick="closeModal(event)">
+  <div class="zone-panel" id="zonePanel">
+    <div class="zone-panel-title" id="zpTitle">Cabeza</div>
+    <div class="zone-panel-sub" id="zpSub">Selecciona la zona exacta donde sientes molestia</div>
+    <div class="zone-subzones" id="zpSubzones"></div>
+    <button class="zone-close" onclick="closeZone()">Confirmar y continuar</button>
+  </div>
+</div>
+
+<!-- GEO -->
+<section class="section" id="geo">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#E6FFF9;color:var(--teal)">Geolocalización</div>
+      <h2 class="section-title">Médicos cerca<br>de <span style="color:var(--teal)">ti</span></h2>
+      <p class="section-sub">Filtra por tu seguro y especialidad. Salus muestra en tiempo real los médicos disponibles que aceptan tu ARS.</p>
+    </div>
+
+    <div style="margin-top:32px" class="fade-in">
+      <div style="font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Tu seguro (ARS)</div>
+      <div class="ars-grid">
+        <button class="ars-btn sel" onclick="selARS(this,'MAPFRE')">MAPFRE</button>
+        <button class="ars-btn" onclick="selARS(this,'SIS')">SIS</button>
+        <button class="ars-btn" onclick="selARS(this,'Universal')">Universal</button>
+        <button class="ars-btn" onclick="selARS(this,'ARS Humano')">ARS Humano</button>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Especialidad</div>
+      <div class="spec-row">
+        <button class="spec-btn sel" onclick="selSpec(this,'Cardiólogo')">Cardiólogo</button>
+        <button class="spec-btn" onclick="selSpec(this,'Neurólogo')">Neurólogo</button>
+        <button class="spec-btn" onclick="selSpec(this,'Pediatra')">Pediatra</button>
+        <button class="spec-btn" onclick="selSpec(this,'General')">General</button>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map-bg">
+          <div class="map-road-h" style="top:42%;"></div>
+          <div class="map-road-h" style="top:68%;height:5px;opacity:.6"></div>
+          <div class="map-road-v" style="left:33%"></div>
+          <div class="map-road-v" style="left:66%;width:5px;opacity:.6"></div>
+          <div class="map-block" style="top:15%;left:8%;width:55px;height:38px"></div>
+          <div class="map-block" style="top:55%;right:12%;width:70px;height:45px"></div>
+          <div class="map-block" style="top:10%;right:25%;width:45px;height:55px"></div>
+          <div class="map-block" style="bottom:15%;left:40%;width:50px;height:35px"></div>
+          <div class="user-pin"></div>
+          <div class="mpin" id="mp1" style="top:34%;left:40%">
+            <div class="mpin-b"><div class="mpin-dot bg-teal"></div><span id="mp1t">Dr. Ramírez</span></div>
+          </div>
+          <div class="mpin" id="mp2" style="top:60%;left:25%">
+            <div class="mpin-b"><div class="mpin-dot bg-magenta"></div><span id="mp2t">Dra. Pérez</span></div>
+          </div>
+          <div class="mpin" id="mp3" style="top:22%;left:68%">
+            <div class="mpin-b"><div class="mpin-dot bg-orange"></div><span id="mp3t">Dr. Herrera</span></div>
+          </div>
+          <div class="map-lbl" id="mapLbl">Santo Domingo · MAPFRE · Cardiólogos</div>
+        </div>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px" id="resultsLabel">3 disponibles hoy</div>
+      <div class="doc-list" id="docList">
+        <div class="doc-card in">
+          <div class="doc-av bg-navy">R</div>
+          <div><div class="doc-name">Dr. Carlos Ramírez</div><div class="doc-spec">Cardiólogo · Clínica Abel González</div><div class="doc-tags"><span class="dtag" style="background:#E6FFF9;color:var(--teal)">MAPFRE</span><span class="dtag" style="background:#EEF2FF;color:var(--navy)">1.2 km</span><span class="dtag" style="background:#E6FFF9;color:var(--teal)">Hoy</span></div></div>
+        </div>
+        <div class="doc-card in" style="transition-delay:.1s">
+          <div class="doc-av bg-magenta">P</div>
+          <div><div class="doc-name">Dra. Ana Pérez</div><div class="doc-spec">Cardióloga · Centro Médico UCE</div><div class="doc-tags"><span class="dtag" style="background:#E6FFF9;color:var(--teal)">MAPFRE</span><span class="dtag" style="background:#EEF2FF;color:var(--navy)">2.8 km</span><span class="dtag" style="background:#E6FFF9;color:var(--teal)">Disponible</span></div></div>
+        </div>
+        <div class="doc-card in" style="transition-delay:.2s">
+          <div class="doc-av bg-orange">H</div>
+          <div><div class="doc-name">Dr. Miguel Herrera</div><div class="doc-spec">Cardiólogo · Clínica Corazón Sano</div><div class="doc-tags"><span class="dtag" style="background:#E6FFF9;color:var(--teal)">MAPFRE</span><span class="dtag" style="background:#EEF2FF;color:var(--navy)">3.5 km</span><span class="dtag" style="background:#FFF0EB;color:var(--orange)">Mañana</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#EEF2FF;color:var(--navy)">Funcionalidades</div>
+      <h2 class="section-title">Todo en<br>un solo lugar</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-icon" style="background:#E6FFF9">📅</div><h3>Gestión de Citas</h3><p>Agenda, reprograma y recibe confirmaciones. Recordatorios automáticos.</p></div>
+      <div class="feat-card"><div class="feat-icon" style="background:#EEF2FF">📋</div><h3>Historial Médico</h3><p>Perfil clínico completo accesible por tus médicos en tiempo real.</p></div>
+      <div class="feat-card"><div class="feat-icon" style="background:#FFF0EB">💊</div><h3>Medicamentos</h3><p>Recordatorio de dosis según tu prescripción, a la hora exacta.</p></div>
+      <div class="feat-card"><div class="feat-icon" style="background:#FFF0EB">💉</div><h3>Vacunas</h3><p>Calendario de vacunación personal con alertas de refuerzos.</p></div>
+      <div class="feat-card"><div class="feat-icon" style="background:#FDF2F8">🚨</div><h3>Emergencias</h3><p>Un toque envía tu ubicación y datos médicos al 911 automáticamente.</p></div>
+      <div class="feat-card"><div class="feat-icon" style="background:#FDF2F8">🌸</div><h3>Salud Femenina</h3><p>Seguimiento del ciclo menstrual integrado a tu historial médico.</p></div>
+      <div class="feat-card"><div class="feat-icon" style="background:#E6FFF9">📹</div><h3>Telemedicina</h3><p>Videoconsulta con especialistas desde donde estés, sin filas.</p></div>
+      <div class="feat-card"><div class="feat-icon" style="background:#EEF2FF">🧪</div><h3>Labs y Farmacias</h3><p>Resultados de laboratorio en la app. Medicamentos a domicilio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFICATIONS -->
+<section class="section" id="notifs" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#FFF0EB;color:var(--orange)">Notificaciones</div>
+      <h2 class="section-title">Tu salud no<br>se <span style="color:var(--orange)">olvida</span></h2>
+      <p class="section-sub">Salus te recuerda lo que importa, en el momento exacto.</p>
+    </div>
+    <div class="notif-phone fade-in">
+      <div class="notif-screen">
+        <div class="notif-time-big">8:07</div>
+        <div class="notif-item">
+          <div class="notif-app-ic" style="background:#FFF0EB">💊</div>
+          <div class="notif-body"><div class="notif-app-nm">SALUS · Medicamentos</div><div class="notif-msg">Metformina 500mg · Ahora</div></div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-app-ic" style="background:#EEF2FF">📅</div>
+          <div class="notif-body"><div class="notif-app-nm">SALUS · Citas</div><div class="notif-msg">Dr. Ramírez en 2 horas · Lleva tu carnet ARS</div></div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-app-ic" style="background:#FFF0EB">💉</div>
+          <div class="notif-body"><div class="notif-app-nm">SALUS · Vacunas</div><div class="notif-msg">Sofía · Vacuna pendiente esta semana</div></div>
+        </div>
+        <div class="notif-item">
+          <div class="notif-app-ic" style="background:var(--navy)">IA</div>
+          <div class="notif-body"><div class="notif-app-nm">SALUS · IA</div><div class="notif-msg">Patrón detectado · 3 días con dolor de cabeza</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="notif-types fade-in">
+      <div class="notif-type-row">
+        <div class="nt-icon" style="background:#FFF0EB">💊</div>
+        <div><div class="nt-title">Medicamentos</div><div class="nt-desc">Recordatorios según prescripción, a la hora exacta, con instrucciones del médico.</div></div>
+      </div>
+      <div class="notif-type-row">
+        <div class="nt-icon" style="background:#EEF2FF">📅</div>
+        <div><div class="nt-title">Citas médicas</div><div class="nt-desc">24 horas y 1 hora antes de tu cita, con dirección y qué documentos llevar.</div></div>
+      </div>
+      <div class="notif-type-row">
+        <div class="nt-icon" style="background:#FFF0EB">💉</div>
+        <div><div class="nt-title">Vacunas y chequeos</div><div class="nt-desc">Alertas según tu edad, historial y el esquema nacional de vacunación.</div></div>
+      </div>
+      <div class="notif-type-row">
+        <div class="nt-icon" style="background:var(--bg)">IA</div>
+        <div><div class="nt-title">Alertas de IA</div><div class="nt-desc">Cuando detectamos un patrón en tus síntomas, te avisamos antes de que empeore.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIAL -->
+<section class="section" id="historial">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#EEF2FF;color:var(--navy)">Historial Médico</div>
+      <h2 class="section-title">Tu perfil clínico,<br><span style="color:var(--navy)">siempre disponible</span></h2>
+      <p class="section-sub">Cuando llegas donde tu médico, ya tiene acceso completo a tu historial. Sin papeles, sin repetir tu historia cada vez.</p>
+    </div>
+    <div class="hist-card fade-in">
+      <div class="hist-head">
+        <div class="hist-profile">
+          <div class="hist-av">MG</div>
+          <div>
+            <div class="hist-name">María García</div>
+            <div class="hist-meta">28 años · O+ · Femenino · MAPFRE</div>
+          </div>
+        </div>
+        <div class="hist-pills">
+          <div class="hpill">Alergia: Ibuprofeno</div>
+          <div class="hpill">Metformina activa</div>
+          <div class="hpill">Seguimiento cardio</div>
+        </div>
+      </div>
+      <div class="hist-entries">
+        <div class="hist-entry">
+          <div class="entry-badge">Ene<br>2025</div>
+          <div><div class="entry-h5">Sinusitis aguda · Dr. Ramírez</div><div class="entry-p">Amoxicilina 500mg · 7 días</div><span class="etag" style="background:#EEF2FF;color:var(--navy)">Internista</span></div>
+        </div>
+        <div class="hist-entry">
+          <div class="entry-badge">Dic<br>2024</div>
+          <div><div class="entry-h5">Gastritis leve · Dr. Pichardo</div><div class="entry-p">Omeprazol 20mg · 14 días</div><span class="etag" style="background:#E6FFF9;color:var(--teal)">Gastroenterólogo</span></div>
+        </div>
+        <div class="hist-entry">
+          <div class="entry-badge">Oct<br>2024</div>
+          <div><div class="entry-h5">Chequeo rutina · Dra. Lora</div><div class="entry-p">Todo en orden · Próximo Oct 2025</div><span class="etag" style="background:#FFF0EB;color:var(--orange)">Cardióloga</span></div>
+        </div>
+        <div class="hist-entry">
+          <div class="entry-badge">Ago<br>2024</div>
+          <div><div class="entry-h5">Hemograma completo · Lab. Referencia</div><div class="entry-p">Resultados normales · PDF disponible</div><span class="etag" style="background:#FDF2F8;color:var(--magenta)">Laboratorio</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hist-access fade-in">
+      <h4>Acceso directo para tus médicos</h4>
+      <p>Cuando un médico te atiende en Salus, accede a tu perfil completo en tiempo real — historial, alergias, medicamentos activos, exámenes. Sin que tú envíes nada. Los datos viajan contigo automáticamente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section class="section" id="family" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#FDF2F8;color:var(--magenta)">Plan Familiar</div>
+      <h2 class="section-title">Cuida a toda<br>tu <span style="color:var(--magenta)">familia</span></h2>
+      <p class="section-sub">Gestiona la salud de tus hijos, padres y abuelos desde una sola cuenta. Tú eres el titular, aunque ellos no usen la app.</p>
+    </div>
+    <div class="family-hub fade-in">
+      <div class="hub-ring hr1"></div>
+      <div class="hub-ring hr2"></div>
+      <div class="hub-c">🏠</div>
+      <div class="fmember" style="top:8%;left:50%;transform:translateX(-50%)">
+        <div class="fav" style="background:#EEF2FF">👩</div>
+        <div class="fnm">María (Tú)</div>
+        <div class="fstatus" style="background:var(--teal)"></div>
+      </div>
+      <div class="fmember" style="top:22%;right:6%">
+        <div class="fav" style="background:#E6FFF9">👨</div>
+        <div class="fnm">Carlos</div>
+        <div class="fstatus" style="background:var(--teal)"></div>
+      </div>
+      <div class="fmember" style="bottom:18%;right:4%">
+        <div class="fav" style="background:#FFF0EB">👧</div>
+        <div class="fnm">Sofía</div>
+        <div class="fstatus" style="background:var(--orange)"></div>
+      </div>
+      <div class="fmember" style="bottom:6%;left:50%;transform:translateX(-50%)">
+        <div class="fav" style="background:#FDF2F8">👴</div>
+        <div class="fnm">Abuelo</div>
+        <div class="fstatus" style="background:var(--orange)"></div>
+      </div>
+      <div class="fmember" style="bottom:18%;left:4%">
+        <div class="fav" style="background:#E6FFF9">👦</div>
+        <div class="fnm">Mateo</div>
+        <div class="fstatus" style="background:var(--teal)"></div>
+      </div>
+      <div class="fmember" style="top:22%;left:6%">
+        <div class="fav" style="background:#FDF2F8">👵</div>
+        <div class="fnm">Abuela</div>
+        <div class="fstatus" style="background:var(--orange)"></div>
+      </div>
+    </div>
+    <div class="family-feats fade-in">
+      <div class="fam-feat">
+        <div class="fam-feat-ic" style="background:#FFF0EB">👶</div>
+        <p>Perfil médico completo para niños, con vacunas y pediatra asignado</p>
+      </div>
+      <div class="fam-feat">
+        <div class="fam-feat-ic" style="background:#EEF2FF">👴</div>
+        <p>Gestión de medicamentos y citas para adultos mayores sin que ellos necesiten usar la app</p>
+      </div>
+      <div class="fam-feat">
+        <div class="fam-feat-ic" style="background:#E6FFF9">🔔</div>
+        <p>Todas las notificaciones de la familia en un solo dashboard</p>
+      </div>
+      <div class="fam-feat">
+        <div class="fam-feat-ic" style="background:#FDF2F8">🛡</div>
+        <p>Cada miembro mantiene la privacidad de su historial si así lo desea</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="section" id="plans">
+  <div class="section-inner">
+    <div class="fade-in">
+      <div class="tag" style="background:#E6FFF9;color:var(--teal)">Planes</div>
+      <h2 class="section-title">Elige tu plan</h2>
+      <p class="section-sub">Empieza gratis. Todo el mundo merece acceso a su salud.</p>
+    </div>
+    <div class="plans-wrap fade-in">
+      <div class="plan-card">
+        <div class="plan-name">Básico</div>
+        <div class="plan-desc">Para empezar a centralizar tu salud de forma digital.</div>
+        <div class="plan-price">Gratis</div>
+        <div class="plan-period" style="margin-bottom:20px">Siempre gratis</div>
+        <ul class="plan-feats">
+          <li style="--c:var(--teal)"><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Perfil de salud básico</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Historial médico completo</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Búsqueda de médicos y ARS</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>2 recordatorios de medicamentos</li>
+        </ul>
+        <button class="plan-btn" style="border-color:var(--navy);color:var(--navy);background:transparent">Comenzar gratis</button>
+      </div>
+
+      <div class="plan-card top-pick">
+        <div class="top-pick-badge">Más popular</div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-desc">Control total de tu salud con IA y telemedicina incluida.</div>
+        <div class="plan-price">RD$350 <span>/mes</span></div>
+        <div class="plan-period">o RD$3,200/año · 2 meses gratis</div>
+        <ul class="plan-feats">
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Todo lo del plan Básico</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Avatar corporal con IA</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Recordatorios ilimitados</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Telemedicina incluida</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Geolocalización con ARS</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Alerta de emergencias 911</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--teal);display:inline-block;flex-shrink:0"></span>Calendario menstrual</li>
+        </ul>
+        <button class="plan-btn" style="border-color:var(--teal);color:#fff;background:var(--teal)">Comenzar Premium</button>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Familiar</div>
+        <div class="plan-desc">Un titular gestiona la salud de toda la familia desde una cuenta.</div>
+        <div class="plan-price">RD$750 <span>/mes</span></div>
+        <div class="plan-period">Hasta 6 miembros · RD$125 por persona</div>
+        <ul class="plan-feats">
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--magenta);display:inline-block;flex-shrink:0"></span>Todo lo del plan Premium</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--magenta);display:inline-block;flex-shrink:0"></span>Hasta 6 perfiles familiares</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--magenta);display:inline-block;flex-shrink:0"></span>Gestión de menores y adultos mayores</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--magenta);display:inline-block;flex-shrink:0"></span>Dashboard familiar unificado</li>
+          <li><span style="width:18px;height:18px;border-radius:50%;background:var(--magenta);display:inline-block;flex-shrink:0"></span>Calendarios de vacunas por miembro</li>
+        </ul>
+        <button class="plan-btn" style="border-color:var(--magenta);color:var(--magenta);background:transparent">Plan Familiar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SA<span>LUS</span></div>
+  <div class="footer-divider"></div>
+  <p>Sistema Integral para la Gestión de la Salud y los Servicios Médicos</p>
+  <p style="margin-top:8px">Ivis Veloz · Henairys Gómez · Eimi Calderón</p>
+  <p style="margin-top:4px">República Dominicana · 2025</p>
+</footer>
+
+<script>
+// ── OBSERVER ─────────────────────────────────────────────────────────────────
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})
+},{threshold:.12});
+document.querySelectorAll('.fade-in,.prob-card,.feat-card,.doc-card').forEach(el=>obs.observe(el));
+document.querySelectorAll('.feat-card').forEach((c,i)=>c.style.transitionDelay=`${i*.07}s`);
+document.querySelectorAll('.prob-card').forEach((c,i)=>c.style.transitionDelay=`${i*.1}s`);
+
+// ── COUNTERS ──────────────────────────────────────────────────────────────────
+function counter(el,val,suf,dur=1600){
+  let n=0;const step=val/(dur/16);
+  const t=setInterval(()=>{n+=step;if(n>=val){n=val;clearInterval(t)}
+  el.textContent=Math.floor(n)+suf},16);
+}
+const cobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){
+    counter(document.getElementById('s1'),90,'%');
+    counter(document.getElementById('s2'),18,'+');
+    counter(document.getElementById('s3'),3,'h+');
+    counter(document.getElementById('s4'),0,'');
+    cobs.disconnect();
+  }})},{threshold:.5});
+cobs.observe(document.querySelector('.stats-row'));
+
+// ── CHAT ──────────────────────────────────────────────────────────────────────
+const replies={
+  'cabeza':'Entendido. ¿Es un dolor pulsante, de presión o ardor? Toca la cabeza en el muñeco para que puedas indicar la zona exacta.',
+  'fiebre':'La fiebre es una señal de que tu cuerpo está respondiendo a algo. ¿Cuánta temperatura tienes? ¿Tienes otros síntomas como dolor de garganta o tos?',
+  'pecho':'El dolor de pecho siempre merece atención inmediata. ¿Es opresivo? ¿Se irradia al brazo izquierdo o la mandíbula? Basado en tus síntomas previos, recomiendo que contactes un Cardiólogo hoy.',
+  'cansado':'El cansancio persistente puede indicar desde anemia hasta estrés crónico. ¿Llevas más de una semana así? ¿Duermes bien?',
+  'mareos':'Los mareos combinados con los dolores de cabeza que reportaste esta semana forman un patrón importante. La IA detecta posible hipertensión. Recomiendo visitar un médico internista pronto.',
+};
+function addMsg(text,type){
+  const c=document.getElementById('chatMsgs');
+  const d=document.createElement('div');
+  d.className=`msg msg-${type}`;d.innerHTML=text;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+function showTyping(){
+  const c=document.getElementById('chatMsgs');
+  const d=document.createElement('div');
+  d.id='typ';d.className='msg msg-ai';
+  d.innerHTML='<div class="typing-dots"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>';
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+function removeTyping(){const t=document.getElementById('typ');if(t)t.remove()}
+function respond(text){
+  showTyping();
+  const key=Object.keys(replies).find(k=>text.toLowerCase().includes(k));
+  setTimeout(()=>{removeTyping();addMsg(key?replies[key]:'Anotado. ¿Puedes indicarme en el muñeco dónde sientes la molestia?','ai')},1100);
+}
+function sendChip(t){addMsg(t,'user');respond(t)}
+function doSend(){const i=document.getElementById('chatIn');const t=i.value.trim();if(!t)return;addMsg(t,'user');i.value='';respond(t)}
+
+// ── BODY ZONES ────────────────────────────────────────────────────────────────
+const zoneData={
+  head:{
+    title:'Cabeza',sub:'Selecciona la zona exacta',
+    zones:[
+      {name:'Frente',desc:'Dolor frontal, sinusitis, presión',color:'#FFF0EB',tc:'var(--orange)'},
+      {name:'Sien derecha',desc:'Migraña, tensión temporal',color:'#EEF2FF',tc:'var(--navy)'},
+      {name:'Sien izquierda',desc:'Migraña, dolor de cabeza en racimo',color:'#EEF2FF',tc:'var(--navy)'},
+      {name:'Occipital / Nuca',desc:'Cervicalgia, hipertensión',color:'#FDF2F8',tc:'var(--magenta)'},
+    ]
+  },
+  neck:{
+    title:'Cuello',sub:'Indica dónde sientes la molestia',
+    zones:[
+      {name:'Anterior',desc:'Dolor de garganta, tiroides',color:'#E6FFF9',tc:'var(--teal)'},
+      {name:'Lateral derecho',desc:'Ganglios, contractura',color:'#FFF0EB',tc:'var(--orange)'},
+      {name:'Lateral izquierdo',desc:'Ganglios, contractura',color:'#FFF0EB',tc:'var(--orange)'},
+      {name:'Cervical posterior',desc:'Contractura, hernia discal',color:'#FDF2F8',tc:'var(--magenta)'},
+    ]
+  },
+  chest:{
+    title:'Pecho / Tórax',sub:'El dolor de pecho requiere atención. Indica la zona',
+    zones:[
+      {name:'Centro (esternón)',desc:'Costocondritis, reflujo, angina',color:'#FFF0EB',tc:'var(--orange)'},
+      {name:'Lado izquierdo',desc:'Corazón, pericarditis, infarto',color:'#FDF2F8',tc:'var(--magenta)'},
+      {name:'Lado derecho',desc:'Pleura, costillas, pulmón derecho',color:'#EEF2FF',tc:'var(--navy)'},
+      {name:'Parte alta / clavícula',desc:'Neumotórax, hombro irradiado',color:'#E6FFF9',tc:'var(--teal)'},
+    ]
+  },
+  abdomen:{
+    title:'Abdomen',sub:'¿En qué cuadrante sientes el dolor?',
+    zones:[
+      {name:'Superior derecho',desc:'Hígado, vesícula biliar',color:'#E6FFF9',tc:'var(--teal)'},
+      {name:'Superior izquierdo',desc:'Estómago, bazo, páncreas',color:'#FFF0EB',tc:'var(--orange)'},
+      {name:'Inferior derecho',desc:'Apéndice, intestino, ovario',color:'#FDF2F8',tc:'var(--magenta)'},
+      {name:'Inferior izquierdo',desc:'Colon descendente, ovario izq.',color:'#EEF2FF',tc:'var(--navy)'},
+    ]
+  },
+  larm:{title:'Brazo izquierdo',sub:'¿Dónde exactamente?',zones:[{name:'Hombro',desc:'Manguito rotador, bursitis',color:'#E6FFF9',tc:'var(--teal)'},{name:'Codo',desc:'Epicondilitis, bursitis',color:'#FFF0EB',tc:'var(--orange)'},{name:'Antebrazo',desc:'Contractura, tendinitis',color:'#EEF2FF',tc:'var(--navy)'},{name:'Mano / muñeca',desc:'Túnel carpiano, artritis',color:'#FDF2F8',tc:'var(--magenta)'}]},
+  rarm:{title:'Brazo derecho',sub:'¿Dónde exactamente?',zones:[{name:'Hombro',desc:'Manguito rotador, bursitis',color:'#E6FFF9',tc:'var(--teal)'},{name:'Codo',desc:'Epicondilitis, bursitis',color:'#FFF0EB',tc:'var(--orange)'},{name:'Antebrazo',desc:'Contractura, tendinitis',color:'#EEF2FF',tc:'var(--navy)'},{name:'Mano / muñeca',desc:'Túnel carpiano, artritis',color:'#FDF2F8',tc:'var(--magenta)'}]},
+  lleg:{title:'Pierna izquierda',sub:'Indica la zona de dolor',zones:[{name:'Muslo',desc:'Contractura, ciática',color:'#E6FFF9',tc:'var(--teal)'},{name:'Rodilla',desc:'Menisco, ligamentos, artritis',color:'#FFF0EB',tc:'var(--orange)'},{name:'Pantorrilla',desc:'Trombosis, calambres',color:'#FDF2F8',tc:'var(--magenta)'},{name:'Tobillo',desc:'Esguince, tendinitis',color:'#EEF2FF',tc:'var(--navy)'}]},
+  rleg:{title:'Pierna derecha',sub:'Indica la zona de dolor',zones:[{name:'Muslo',desc:'Contractura, ciática',color:'#E6FFF9',tc:'var(--teal)'},{name:'Rodilla',desc:'Menisco, ligamentos, artritis',color:'#FFF0EB',tc:'var(--orange)'},{name:'Pantorrilla',desc:'Trombosis, calambres',color:'#FDF2F8',tc:'var(--magenta)'},{name:'Tobillo',desc:'Esguince, tendinitis',color:'#EEF2FF',tc:'var(--navy)'}]},
+  lfoot:{title:'Pie izquierdo',sub:'¿Dónde sientes el dolor?',zones:[{name:'Planta',desc:'Fascitis plantar',color:'#FFF0EB',tc:'var(--orange)'},{name:'Talón',desc:'Espolón calcáneo',color:'#EEF2FF',tc:'var(--navy)'},{name:'Dedos',desc:'Gota, uña encarnada',color:'#FDF2F8',tc:'var(--magenta)'},{name:'Empeine',desc:'Fractura por estrés',color:'#E6FFF9',tc:'var(--teal)'}]},
+  rfoot:{title:'Pie derecho',sub:'¿Dónde sientes el dolor?',zones:[{name:'Planta',desc:'Fascitis plantar',color:'#FFF0EB',tc:'var(--orange)'},{name:'Talón',desc:'Espolón calcáneo',color:'#EEF2FF',tc:'var(--navy)'},{name:'Dedos',desc:'Gota, uña encarnada',color:'#FDF2F8',tc:'var(--magenta)'},{name:'Empeine',desc:'Fractura por estrés',color:'#E6FFF9',tc:'var(--teal)'}]},
+};
+
+let currentZone=null;
+function openZone(zone){
+  currentZone=zone;
+  const data=zoneData[zone];
+  document.getElementById('zpTitle').textContent=data.title;
+  document.getElementById('zpSub').textContent=data.sub;
+  const container=document.getElementById('zpSubzones');
+  container.innerHTML='';
+  data.zones.forEach((z,i)=>{
+    const div=document.createElement('div');
+    div.className='subzone';
+    div.style.background=z.color;
+    div.innerHTML=`<div class="subzone-name" style="color:${z.tc}">${z.name}</div><div class="subzone-desc">${z.desc}</div>`;
+    div.onclick=()=>{
+      document.querySelectorAll('.subzone').forEach(s=>s.classList.remove('selected'));
+      div.classList.add('selected');
+      addMsg(`Siento dolor en: ${data.title} — ${z.name}`,'user');
+      respond(`${data.title} — ${z.name}`);
+    };
+    container.appendChild(div);
+  });
+  document.getElementById('zoneModal').classList.add('open');
+  // Mark zone active
+  document.querySelectorAll('.bzone').forEach(b=>b.classList.remove('pain','active'));
+  const bz=document.getElementById('bz-'+zone);
+  if(bz){bz.classList.add('pain');bz.style.fill='#FFF0EB';bz.style.stroke='var(--orange)'}
+}
+function closeZone(){document.getElementById('zoneModal').classList.remove('open')}
+function closeModal(e){if(e.target===document.getElementById('zoneModal'))closeZone()}
+
+// ── GEO ───────────────────────────────────────────────────────────────────────
+const docDB={
+  'Cardiólogo':[
+    {init:'R',bg:'bg-navy',name:'Dr. Carlos Ramírez',spec:'Cardiólogo · Clínica Abel González',dist:'1.2 km',avail:'Hoy',ac:'teal'},
+    {init:'P',bg:'bg-magenta',name:'Dra. Ana Pérez',spec:'Cardióloga · Centro Médico UCE',dist:'2.8 km',avail:'Disponible',ac:'teal'},
+    {init:'H',bg:'bg-orange',name:'Dr. Miguel Herrera',spec:'Cardiólogo · Clínica Corazón Sano',dist:'3.5 km',avail:'Mañana',ac:'orange'},
+  ],
+  'Neurólogo':[
+    {init:'M',bg:'bg-navy',name:'Dra. Laura Méndez',spec:'Neuróloga · Hospital General Plaza',dist:'0.9 km',avail:'Hoy',ac:'teal'},
+    {init:'D',bg:'bg-teal',name:'Dr. Roberto Díaz',spec:'Neurólogo · Clínica Neurológica SD',dist:'2.1 km',avail:'Disponible',ac:'teal'},
+    {init:'L',bg:'bg-magenta',name:'Dra. Carmen López',spec:'Neuróloga · Centro Médico Bávaro',dist:'4.0 km',avail:'Mañana',ac:'orange'},
+  ],
+  'Pediatra':[
+    {init:'S',bg:'bg-teal',name:'Dra. Sofía Martínez',spec:'Pediatra · Clínica Pediátrica SD',dist:'0.7 km',avail:'Hoy',ac:'teal'},
+    {init:'J',bg:'bg-orange',name:'Dr. Luis Jiménez',spec:'Pediatra · Centro Infantil Salud',dist:'1.9 km',avail:'Disponible',ac:'teal'},
+    {init:'R',bg:'bg-magenta',name:'Dra. Rosa Fernández',spec:'Pediatra · Clínica Niñez Sana',dist:'3.2 km',avail:'Mañana',ac:'orange'},
+  ],
+  'General':[
+    {init:'J',bg:'bg-navy',name:'Dr. Juan García',spec:'Médico General · Centro Norte',dist:'0.3 km',avail:'Hoy',ac:'teal'},
+    {init:'M',bg:'bg-teal',name:'Dra. María Sosa',spec:'Médico General · Consultorio RD',dist:'1.1 km',avail:'Disponible',ac:'teal'},
+    {init:'P',bg:'bg-orange',name:'Dr. Pedro Reyes',spec:'Médico General · Clínica Bella Vista',dist:'2.5 km',avail:'Hoy',ac:'teal'},
+  ],
+};
+let curARS='MAPFRE',curSpec='Cardiólogo';
+function selARS(el,name){
+  document.querySelectorAll('.ars-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');curARS=name;updateGeo();
+}
+function selSpec(el,name){
+  document.querySelectorAll('.spec-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');curSpec=name;updateGeo();
+}
+function updateGeo(){
+  document.getElementById('mapLbl').textContent=`Santo Domingo · ${curARS} · ${curSpec}s`;
+  const pins=['mp1t','mp2t','mp3t'];
+  const docs=docDB[curSpec]||docDB['Cardiólogo'];
+  pins.forEach((pid,i)=>{if(docs[i])document.getElementById(pid).textContent=docs[i].name.split(' ').slice(-1)[0]});
+  const list=document.getElementById('docList');
+  list.innerHTML='';
+  docs.forEach((d,i)=>{
+    const avBg=d.ac==='teal'?'#E6FFF9':'#FFF0EB';
+    const avC=d.ac==='teal'?'var(--teal)':'var(--orange)';
+    const card=document.createElement('div');
+    card.className='doc-card';
+    card.innerHTML=`<div class="doc-av ${d.bg}">${d.init}</div><div><div class="doc-name">${d.name}</div><div class="doc-spec">${d.spec}</div><div class="doc-tags"><span class="dtag" style="background:#E6FFF9;color:var(--teal)">${curARS}</span><span class="dtag" style="background:#EEF2FF;color:var(--navy)">${d.dist}</span><span class="dtag" style="background:${avBg};color:${avC}">${d.avail}</span></div></div>`;
+    list.appendChild(card);
+    setTimeout(()=>card.classList.add('in'),i*100);
+  });
+  document.getElementById('resultsLabel').textContent=`${docs.length} disponibles hoy`;
+}
+</script>
+</body>
+</html>
