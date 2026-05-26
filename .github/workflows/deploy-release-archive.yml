@@ -1,0 +1,69 @@
+name: Deploy release archive
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Download release archive
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          mapfile -t archive_urls < <(jq -r '.release.assets[] | select(.name == "site.zip") | .url' "$GITHUB_EVENT_PATH")
+
+          if [ "${#archive_urls[@]}" -eq 0 ]; then
+            echo "No site.zip release asset was found. Attach a release asset named exactly site.zip and publish the release again."
+            exit 1
+          fi
+
+          if [ "${#archive_urls[@]}" -gt 1 ]; then
+            echo "Multiple site.zip assets were found. Keep only one site.zip asset in the release."
+            exit 1
+          fi
+
+          archive_url="${archive_urls[0]}"
+
+          curl -fLsS \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/octet-stream" \
+            "$archive_url" \
+            -o site.zip
+
+      - name: Extract archive
+        run: |
+          set -euo pipefail
+          mkdir -p site
+          if ! unzip -t site.zip >/dev/null; then
+            echo "The site.zip asset is not a valid zip archive."
+            exit 1
+          fi
+          unzip -q site.zip -d site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
